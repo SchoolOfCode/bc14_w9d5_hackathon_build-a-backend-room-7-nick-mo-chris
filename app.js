@@ -23,7 +23,7 @@ app.get("/api/recipes", async function (req, res) {
     console.log(`Successfully fetched recipes`);
   }
 
-  res.send({ success, recipes });
+  res.send({ success, payload: recipes });
 
   console.log("Get recipes. Test");
 });
@@ -38,7 +38,7 @@ app.get("/api/recipes/:id", async function (req, res) {
     console.log(`Successfully fetched recipes`);
   }
 
-  res.send({ success, recipe });
+  res.send({ success, payload: recipe });
 
   console.log(`Testing for id: ${req.params.id}`);
 });
@@ -53,7 +53,7 @@ app.post("/api/recipes", async function (req, res) {
     console.log(`Successfully added recipe`);
   }
 
-  res.send({ success, newRecipe });
+  res.send({ success, payload: newRecipe });
   console.log(`Testing for new recipe`);
 });
 
@@ -68,7 +68,7 @@ app.patch("/api/recipes/:id", async function (req, res) {
     console.log(`Successfully updated recipe`);
   }
 
-  res.send({ success, updatedRecipe });
+  res.send({ success, payload: updatedRecipe });
   console.log(`Testing for updated recipe with id ${req.params.id}`);
 });
 
@@ -87,7 +87,7 @@ app.delete("/api/recipes/:id", async (req, res) => {
   }
   // return an object with value of success(boolean),
   // deleted recipe and recipes after delete
-  res.send({ success, deletedRecipe, recipesAfterDelete });
+  res.send({ success, payload: deletedRecipe, recipesAfterDelete });
 
   console.log("Testing for Delete.", { deletedRecipe });
 });

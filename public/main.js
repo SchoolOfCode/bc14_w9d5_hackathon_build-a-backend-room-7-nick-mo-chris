@@ -1,19 +1,20 @@
+// Define the URL for the API
 const url = "http://localhost:3000";
-
+// Select DOM elements
 const recipesSection = document.querySelector("#recipes");
 const getRecipeButton = document.querySelector("#get-recipes");
 const submitButton = document.querySelector("button[type='submit']");
 const ingredientButton = document.querySelector("#add-ingredient");
 const ingredientsInput = document.querySelector("#ingredients-input");
 const ingredientsList = document.querySelector("#ingredients-list");
-
+// Add event listeners
 ingredientButton.addEventListener("click", addIngredient);
 submitButton.addEventListener("click", handleSubmit);
 getRecipeButton.addEventListener("click", handleClick);
-
+// Function to add ingredient to list
 function addIngredient(event) {
   event.preventDefault();
-
+  // Create new list item and add to list
   const li = document.createElement("li");
   const { value } = ingredientsInput;
   if (value === "") {
@@ -23,13 +24,13 @@ function addIngredient(event) {
   ingredientsInput.value = "";
   ingredientsList.appendChild(li);
 }
-
+// Function to handle form submission
 function handleSubmit(event) {
   event.preventDefault();
-
+  // Send POST request to API to create new recipe
   createRecipe();
 }
-
+// Async function to create new recipe by sending POST request to API
 async function createRecipe() {
   console.log(gatherFormData());
   const response = await fetch(`${url}/api/recipes`, {
@@ -40,7 +41,7 @@ async function createRecipe() {
   const data = await response.json();
   console.log(data);
 }
-
+// Function to gather form data and return it as an object
 function gatherFormData() {
   const title = document.querySelector("#title").value;
   const ingredientsList = document.querySelectorAll("#ingredients-list > li");
@@ -54,12 +55,12 @@ function gatherFormData() {
     image,
   };
 }
-
+// Function to handle click on "Get Recipes" button
 function handleClick(event) {
   event.preventDefault();
   getRecipes();
 }
-
+// Async function to retrieve all recipes from API and display them on the page
 async function getRecipes() {
   const response = await fetch(`${url}/api/recipes`);
   const { payload } = await response.json();
@@ -67,12 +68,12 @@ async function getRecipes() {
   console.log(payload);
   payload.forEach(renderRecipe);
 }
-
+// Function to render recipe on the page
 function renderRecipe(recipe) {
   const article = createRecipeView(recipe);
   recipesSection.appendChild(article);
 }
-
+// Function to create HTML element for a recipe
 function createRecipeView({ title, ingredients, instructions, image }) {
   const article = document.createElement("article");
   const h2 = document.createElement("h2");
@@ -89,7 +90,7 @@ function createRecipeView({ title, ingredients, instructions, image }) {
   article.appendChild(p);
   return article;
 }
-
+// Function to create HTML element for a list of ingredients
 function createIngredientsList(ingredients) {
   const ul = document.createElement("ul");
   ingredients.map(createIngredient).forEach(function (item) {
@@ -97,11 +98,5 @@ function createIngredientsList(ingredients) {
   });
   return ul;
 }
-
-function createIngredient(ingredient) {
-  const li = document.createElement("li");
-  li.innerHTML = ingredient;
-  return li;
-}
-
+// Call getRecipes function to display recipes on page when page is loaded
 getRecipes();
