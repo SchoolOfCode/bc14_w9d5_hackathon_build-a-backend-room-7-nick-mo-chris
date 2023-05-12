@@ -1,52 +1,61 @@
 body {
-  background-color: #f8f8f8;
+  background-color: #6c757d;
   font-family: "Patrick Hand", cursive;
   padding: 20px;
-  color: #333;
+  color: #fff;
 }
 
 h1 {
   font-family: "Indie Flower", cursive;
-  color: #4a4a4a;
-  font-size: 3em;
+  color: #ffc107;
+  font-size: 4em;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+  text-shadow: 2px 2px #ff6f00;
 }
 
 form {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 800px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #fff;
+  border: 3px groove #fff;
+  border-radius: 30px;
+  box-shadow: 5px 5px #ff6f00;
+  background-color: #333;
 }
 
 form label {
   display: block;
   margin-bottom: 10px;
+  color: #ffc107;
 }
 
 form input,
 form textarea {
   width: 100%;
   padding: 10px;
-  font-size: 1em;
+  font-size: 1.2em;
   margin-bottom: 20px;
   box-sizing: border-box;
+  background-color: #6c757d;
+  color: #fff;
+  border: 2px solid #ffc107;
+  border-radius: 10px;
 }
 
 form button {
   padding: 10px 20px;
-  background-color: #00897b;
+  background-color: #ff6f00;
   color: #fff;
   border: none;
-  font-size: 1em;
+  font-size: 1.2em;
   cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 2px 2px #ffc107;
 }
 
 form button:hover {
-  background-color: #00695c;
+  background-color: #ffc107;
 }
 
 #add-ingredient {
@@ -59,26 +68,30 @@ form button:hover {
 }
 
 #ingredients-list li {
-  background-color: #ffeb3b;
+  background-color: #ffc107;
+  color: #333;
   padding: 5px;
   margin-bottom: 5px;
   border-radius: 5px;
+  box-shadow: 2px 2px #333;
 }
 
 #get-recipes {
   display: block;
   padding: 10px 20px;
-  background-color: #ff5722;
-  color: #fff;
+  background-color: #ffc107;
+  color: #333;
   border: none;
-  font-size: 1em;
+  font-size: 1.2em;
   cursor: pointer;
-  margin: 40px auto;
+  margin: 60px auto;
   max-width: 600px;
+  border-radius: 20px;
+  box-shadow: 5px 5px #ff6f00;
 }
 
 #get-recipes:hover {
-  background-color: #e64a19;
+  background-color: #ff6f00;
 }
 
 #recipes {
@@ -89,14 +102,16 @@ form button:hover {
 
 #recipes article {
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #fff;
+  border: 3px groove #ffc107;
+  border-radius: 30px;
+  box-shadow: 5px 5px #ff6f00;
+  background-color: #6c757d;
 }
 
 #recipes h2 {
-  font-size: 2em;
-  margin-bottom: 10px;
+  font-size: 2.8em;
+  margin-bottom: 20px;
+  color: #ffc107;
 }
 
 #recipes img {
@@ -112,10 +127,12 @@ form button:hover {
 
 #recipes p {
   line-height: 1.6;
+  color: #fff;
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
+
   form,
   #get-recipes {
     max-width: 100%;
