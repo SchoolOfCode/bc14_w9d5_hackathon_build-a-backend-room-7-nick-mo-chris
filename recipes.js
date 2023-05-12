@@ -45,6 +45,21 @@ export async function createRecipe(newRecipe) {
 // UPDATE A RECIPE BY ID
 export async function updateRecipeByID(id, updatedRecipe) {
   // should replace the recipe at a certain ID with an updated version and return the new recipe
+  const recipesJSON = await fs.readFile(fileName);
+  const recipes = JSON.parse(recipesJSON);
+
+  for (let i = 0; i < recipes.length; i++) {
+    if (recipes[i].id === id) {
+      recipes[i].title = updatedRecipe.title;
+      recipes[i].ingredients = updatedRecipe.ingredients;
+      recipes[i].instructions = updatedRecipe.instructions;
+      recipes[i].image = updatedRecipe.image;
+      break;
+    }
+  }
+  const stringifiedRecipes = JSON.stringify(recipes);
+  await fs.writeFile(fileName, stringifiedRecipes, "utf-8");
+  return recipes;
 }
 
 // DELETE A RECIPE BY ID
