@@ -73,7 +73,7 @@ export async function deleteRecipeByID(id) {
   let indexToDelete = null;
 
   // use a find method to find the correct recipe id
-  for (i = 0; i < recipes.length; i++) {
+  for (let i = 0; i < recipes.length; i++) {
     if (recipes[i].id === id) {
       indexToDelete = i;
       break;

@@ -43,6 +43,14 @@ app.patch("/api/recipes/:id", async function (req, res) {
 });
 
 // delete recipe
+app.delete("/api/recipes/:id", async (req, res) => {
+  const deletedRecipe = await deleteRecipeByID(req.params.id);
+
+  // Let's make it display all the recipes that are left to show that something has been deleted.
+  const recipesAfterDelete = await getRecipes();
+  res.send(recipesAfterDelete);
+  console.log("Testing for Delete.", { deletedRecipe });
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
