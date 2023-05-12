@@ -36,6 +36,11 @@ app.post("/api/recipes", async function (req, res) {
 });
 
 // update recipe
+app.patch("/api/recipes/:id", async function (req, res) {
+  const updatedRecipe = await updateRecipeByID(req.params.id, req.body);
+  res.send(updatedRecipe);
+  console.log(`Testing for updated recipe with id ${req.params.id}`);
+});
 
 // delete recipe
 
