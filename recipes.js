@@ -48,21 +48,44 @@ export async function updateRecipeByID(id, updatedRecipe) {
   const recipesJSON = await fs.readFile(fileName);
   const recipes = JSON.parse(recipesJSON);
 
+  let recipeUpdated = null
+
   for (let i = 0; i < recipes.length; i++) {
     if (recipes[i].id === id) {
       recipes[i].title = updatedRecipe.title;
       recipes[i].ingredients = updatedRecipe.ingredients;
       recipes[i].instructions = updatedRecipe.instructions;
       recipes[i].image = updatedRecipe.image;
+      recipeUpdated = recipes[i]
       break;
     }
   }
   const stringifiedRecipes = JSON.stringify(recipes);
   await fs.writeFile(fileName, stringifiedRecipes, "utf-8");
-  return recipes;
+  return recipeUpdated;
 }
 
 // DELETE A RECIPE BY ID
 export async function deleteRecipeByID(id) {
-  // should remove the specific recipe from the collection, and return the deleted recipe
+    const recipesJSON = await fs.readFile(fileName);
+    const recipes = JSON.parse(recipesJSON);
+    
+    let indexToDelete = null
+
+    // use a find method to find the correct recipe id 
+    for (i=0; i<recipes.length ; i++) {
+        if (recipes[i].id === id) {
+            indexToDelete = i
+            break;
+        }
+    }
+    if (indexToDelete !== null) {
+        const deletedRecipe = recipes.splice(indexToDelete, 1);
+
+        const stringifiedRecipes = JSON.stringify(recipes);
+        await fs.writeFile(fileName, stringifiedRecipes, "utf-8");
+
+        return deletedRecipe[0];
+    }
+    return null;
 }
