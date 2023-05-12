@@ -21,6 +21,12 @@ app.get("/api/recipes", async function (req, res) {
   console.log("Get recipes. Test");
 });
 
+app.get("/api/recipes/:id", async function (req, res) {
+  const recipe = await getRecipeByID(req.params.id);
+  res.send(recipe);
+  console.log(`Testing for id: ${req.params.id}`);
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
