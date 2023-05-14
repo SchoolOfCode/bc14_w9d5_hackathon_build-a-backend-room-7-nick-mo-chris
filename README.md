@@ -12,23 +12,23 @@ Remember that you can test your routes with Postman or Thunder Client to ensure 
 
 ### Requirements table
 
-| Method | Path             | Additional Info | Result                                    | Response                                    |
-| ------ | ---------------- | --------------- | ----------------------------------------- | ------------------------------------------- |
-| GET    | /api/recipes     |                 | all recipes                               | { success: Boolean, payload: recipe array } |
-| GET    | /api/recipes/:id |                 | recipes with a particular id if it exists | { success: Boolean, payload: recipe }       |
-| POST   | /api/recipes     | { body }        | create a new recipe                       | { success: Boolean, payload: recipe }       |
-| PATCH  | /api/recipes/:id | { body }        | updated recipe                            | { success: Boolean, payload: recipe }       |
-| DELETE | /api/recipes/:id |                 | recipe deleted                            | { success: Boolean, payload: recipe }       |
+| Method  | Path             | Additional Info | Result                                    | Response                                    |
+| ------- | ---------------- | --------------- | ----------------------------------------- | ------------------------------------------- |
+| GET ✅  | /api/recipes     |                 | all recipes                               | { success: Boolean, payload: recipe array } |
+| GET ✅  | /api/recipes/:id |                 | recipes with a particular id if it exists | { success: Boolean, payload: recipe }       |
+| POST✅  | /api/recipes     | { body }        | create a new recipe                       | { success: Boolean, payload: recipe }       |
+| PATCH✅ | /api/recipes/:id | { body }        | updated recipe                            | { success: Boolean, payload: recipe }       |
+| DELETE✅  | /api/recipes/:id |                 | recipe deleted                            | { success: Boolean, payload: recipe }       |
 
-### Create your CRUD functionality
+### Create your CRUD functionality ✅
 
 There is a `recipes.js` file in the root of your project. It should contain all of the logic that interacts with the recipe collection. Complete the methods in there, so they behave as expected. These functions should be exported so you can use them in other files later.
 
-- `getRecipes` should return an array of all recipes
-- `getRecipeByID` should return the particular recipe we are looking for
-- `createRecipe` should add a recipe to the collection and return the new recipe
-- `updateRecipeByID` should replace the recipe at a certain ID with an updated version and return the new recipe
-- `deleteRecipeByID` should remove the specific recipe from the collection, and return the deleted recipe
+- `getRecipes` should return an array of all recipes ✅
+- `getRecipeByID` should return the particular recipe we are looking for ✅
+- `createRecipe` should add a recipe to the collection and return the new recipe ✅
+- `updateRecipeByID` should replace the recipe at a certain ID with an updated version and return the new recipe ✅
+- `deleteRecipeByID` should remove the specific recipe from the collection, and return the deleted recipe ✅
 
 The recipe data can be found in recipes.json. The helper functions above should create, read, update and delete (CRUD) recipes from the JSON file.
 
